@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/zzap.ogg-46c5654b623c5150de5a8415944413ea.oggstr"
+
+[deps]
+
+source_file="res://ogg/zzap.ogg"
+source_md5="9f0ccd08fb0e0767a0b786d4d9c20d05"
+
+dest_files=[ "res://.import/zzap.ogg-46c5654b623c5150de5a8415944413ea.oggstr" ]
+dest_md5="58fddcc97ccbde18eb589e5f1da9f9f4"
+
+[params]
+
+loop=false
+loop_offset=0
