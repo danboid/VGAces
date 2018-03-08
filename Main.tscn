@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://pmissile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ogg/zzap.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Ovni.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node" index="0"]
 
@@ -37,5 +38,9 @@ volume_db = 0.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+
+[node name="Ovni" parent="." index="3" instance=ExtResource( 5 )]
+
+position = Vector2( 342, 32 )
 
 
