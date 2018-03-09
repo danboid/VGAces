@@ -46,12 +46,15 @@ func _process(delta):
 func fire():
     pmisscount = pmisscount + 1
     var pmissile = Pmissile.instance()
-    pmissile.set_name("pmissile"+str(pmisscount))
+    pmissile.set_name(str(pmisscount))
     add_child(pmissile)
     var pmisspos = Vector2()
     var playerpos = $Player.get_position()
     pmisspos.y = playerpos.y - 35
     pmisspos.x = playerpos.x
-    get_node("pmissile"+str(pmisscount)).set_position(pmisspos)
-    pmissarray.push_back("pmissile"+str(pmisscount))
+    get_node(str(pmisscount)).set_position(pmisspos)
+    pmissarray.push_back(str(pmisscount))
     $PlayerZzap.play()
+	
+func miss_free():
+	
