@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://pmissile.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Ovni.tscn" type="PackedScene" id=5]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=6]
 [ext_resource path="res://HUD.gd" type="Script" id=7]
+[ext_resource path="res://ogg/explosion.ogg" type="AudioStream" id=8]
 
 [node name="Main" type="Node" index="0"]
 
@@ -49,6 +50,14 @@ _sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility" ]
 [node name="HUD" parent="." index="4" instance=ExtResource( 6 )]
 
 script = ExtResource( 7 )
+
+[node name="Explosion" type="AudioStreamPlayer" parent="." index="5"]
+
+stream = ExtResource( 8 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [connection signal="scoreinc" from="Ovni" to="." method="increase_score"]
 
