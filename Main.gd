@@ -6,6 +6,7 @@ export (PackedScene) var Pmissile
 var velocity = Vector2()
 var spacepressed = false
 var speed = 200
+var score = 0
 var screensize
 var pmisscount = 0
 var pmissarray = []
@@ -56,5 +57,7 @@ func fire():
     pmissarray.push_back(str(pmisscount))
     $PlayerZzap.play()
 	
-func miss_free():
+func increase_score():
+	score += 1
+	$HUD.update_score(score)
 	

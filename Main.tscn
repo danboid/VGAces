@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://pmissile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ogg/zzap.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Ovni.tscn" type="PackedScene" id=5]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://HUD.gd" type="Script" id=7]
 
 [node name="Main" type="Node" index="0"]
 
@@ -43,5 +45,11 @@ bus = "Master"
 
 position = Vector2( 344, 175 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility" ]
+
+[node name="HUD" parent="." index="4" instance=ExtResource( 6 )]
+
+script = ExtResource( 7 )
+
+[connection signal="scoreinc" from="Ovni" to="." method="increase_score"]
 
 
