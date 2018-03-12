@@ -6,7 +6,7 @@ signal scoreinc
 
 onready var mainnode = get_node("/root/Main")
 
-func _on_Ovni_area_entered(area):
+func _on_Velon_area_entered(area):
 	mainnode.connect("scoreinc", self, "score_increase")
 	alph -= .1
 	if alph > .1:
