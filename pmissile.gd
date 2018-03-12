@@ -1,6 +1,7 @@
 extends Area2D
 
 func _on_pmissile_area_entered(area):
-	var nuke = self.get_name()
-	get_parent().get_node(nuke).queue_free()
-	get_node("/root/Main").pmissarray.remove(0)
+	var nuke = get_name()
+	var index = get_node("/root/Main/").pmissarray.find(nuke)
+	get_node("/root/Main/"+str(nuke)).queue_free()
+	get_node("/root/Main/").pmissarray.remove(index)

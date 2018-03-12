@@ -35,26 +35,27 @@ func _process(delta):
 	
     var missid = 0
     for miss in pmissarray:
+        # Move player missiles up the screen
         var pmisspos = get_node(miss).get_position()
         pmisspos.y = pmisspos.y -500 * delta
         get_node(miss).set_position(pmisspos)
+		# Remove missiles that fly off screen
         if pmisspos.y < 0:
-            get_node(miss).free()
+            get_node(miss).queue_free()
             pmissarray.remove(missid)
         missid = missid + 1
-		
-	
+
 func fire():
     pmisscount = pmisscount + 1
     var pmissile = Pmissile.instance()
-    pmissile.set_name(str(pmisscount))
+    pmissile.set_name("pmissile"+str(pmisscount))
     add_child(pmissile)
     var pmisspos = Vector2()
     var playerpos = $Player.get_position()
     pmisspos.y = playerpos.y - 35
     pmisspos.x = playerpos.x
-    get_node(str(pmisscount)).set_position(pmisspos)
-    pmissarray.push_back(str(pmisscount))
+    get_node("pmissile"+str(pmisscount)).set_position(pmisspos)
+    pmissarray.push_back("pmissile"+str(pmisscount))
     $PlayerZzap.play()
 	
 func increase_score():
