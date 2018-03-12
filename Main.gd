@@ -3,6 +3,9 @@
 extends Node
 export (PackedScene) var Pmissile
 
+onready var velon = preload("res://Velon.tscn")
+onready var velons = get_node("Velons")
+
 var velocity = Vector2()
 var spacepressed = false
 var speed = 200
@@ -12,7 +15,9 @@ var pmisscount = 0
 var pmissarray = []
 
 func _ready():
-    screensize = $Player.get_viewport_rect().size
+	randomize()
+	screensize = $Player.get_viewport_rect().size
+	spawn_velons(10)
 
 func _process(delta):
     velocity = Vector2()
@@ -62,3 +67,9 @@ func increase_score():
 	score += 1
 	$HUD.update_score(score)
 	
+func spawn_velons(num):
+    for i in range(num):
+        var v = velon.instance()
+        velons.add_child(v)
+        v.connect("scoreinc", self, "increase_score")
+        v.set_position(Vector2(rand_range(0, 444),rand_range(33, 366)))

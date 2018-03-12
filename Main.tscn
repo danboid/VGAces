@@ -1,14 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://pmissile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ogg/zzap.ogg" type="AudioStream" id=4]
-[ext_resource path="res://Ovni.tscn" type="PackedScene" id=5]
-[ext_resource path="res://HUD.tscn" type="PackedScene" id=6]
-[ext_resource path="res://HUD.gd" type="Script" id=7]
-[ext_resource path="res://ogg/explosion.ogg" type="AudioStream" id=8]
-[ext_resource path="res://Velon.tscn" type="PackedScene" id=9]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://HUD.gd" type="Script" id=6]
+[ext_resource path="res://ogg/explosion.ogg" type="AudioStream" id=7]
 
 [node name="Main" type="Node" index="0"]
 
@@ -43,27 +41,18 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="Ovni" parent="." index="3" instance=ExtResource( 5 )]
+[node name="HUD" parent="." index="3" instance=ExtResource( 5 )]
 
-position = Vector2( 344, 175 )
-_sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility" ]
+script = ExtResource( 6 )
 
-[node name="HUD" parent="." index="4" instance=ExtResource( 6 )]
+[node name="Explosion" type="AudioStreamPlayer" parent="." index="4"]
 
-script = ExtResource( 7 )
-
-[node name="Explosion" type="AudioStreamPlayer" parent="." index="5"]
-
-stream = ExtResource( 8 )
+stream = ExtResource( 7 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="Velon" parent="." index="6" instance=ExtResource( 9 )]
-
-position = Vector2( 122, 176 )
-
-[connection signal="scoreinc" from="Ovni" to="." method="increase_score"]
+[node name="Velons" type="Node2D" parent="." index="5"]
 
 
