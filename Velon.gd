@@ -14,4 +14,5 @@ func _on_Velon_area_entered(area):
 	else:
 		emit_signal("scoreinc")
 		get_node("/root/Main/Explosion").play()
+		get_node("/root/Main").veloncount -= 1
 		queue_free()

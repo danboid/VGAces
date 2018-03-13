@@ -13,11 +13,12 @@ var score = 0
 var screensize
 var pmisscount = 0
 var pmissarray = []
+var veloncount = 10
 
 func _ready():
 	randomize()
 	screensize = $Player.get_viewport_rect().size
-	spawn_velons(10)
+	spawn_velons(veloncount)
 
 func _process(delta):
     velocity = Vector2()
@@ -49,6 +50,11 @@ func _process(delta):
             get_node(miss).queue_free()
             pmissarray.remove(missid)
         missid = missid + 1
+		
+    
+    if veloncount == 3:
+        veloncount += 7
+        spawn_velons(veloncount)
 
 func fire():
     pmisscount = pmisscount + 1
