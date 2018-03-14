@@ -36,9 +36,10 @@ func _process(delta):
 		
     if velocity.length() > 0:
         velocity = velocity.normalized() * speed
-    $Player.position += velocity * delta
-    $Player.position.x = clamp($Player.position.x, 0, screensize.x)
-    $Player.position.y = clamp($Player.position.y, 0, screensize.y)
+    if has_node("Player"):
+        $Player.position += velocity * delta
+        $Player.position.x = clamp($Player.position.x, 0, screensize.x)
+        $Player.position.y = clamp($Player.position.y, 0, screensize.y)
 	
     var missid = 0
     for miss in pmissarray:
@@ -58,20 +59,20 @@ func _process(delta):
         spawn_velons(veloncount)
 
 func fire():
-    pmisscount = pmisscount + 1
-    var pmissile = Pmissile.instance()
-    pmissile.set_name("pmissile"+str(pmisscount))
-    add_child(pmissile)
-    var pmisspos = Vector2()
-    var playerpos = $Player.get_position()
-    pmisspos.y = playerpos.y - 35
-    pmisspos.x = playerpos.x
-    get_node("pmissile"+str(pmisscount)).set_position(pmisspos)
-    pmissarray.push_back("pmissile"+str(pmisscount))
-    $PlayerZzap.play()
+	if has_node("Player"):
+		pmisscount = pmisscount + 1
+		var pmissile = Pmissile.instance()
+		pmissile.set_name("pmissile"+str(pmisscount))
+		add_child(pmissile)
+		var pmisspos = Vector2()
+		var playerpos = $Player.get_position()
+		pmisspos.y = playerpos.y - 35
+		pmisspos.x = playerpos.x
+		get_node("pmissile"+str(pmisscount)).set_position(pmisspos)
+		pmissarray.push_back("pmissile"+str(pmisscount))
+		$PlayerZzap.play()
 	
-func increase_score():
-	score += 1
+func update_score():
 	$HUD.update_score(score)
 	
 func spawn_velons(num):
@@ -79,10 +80,11 @@ func spawn_velons(num):
 	for i in range(num):
 		var v = velon.instance()
 		velons.add_child(v)
-		v.connect("scoreinc", self, "increase_score")
+		v.connect("scoreup", self, "update_score")
 		v.set_position(Vector2(rand_range(22, (screensize.x - 44)),rand_range(33, (screensize.y - 99))))
 
 func spawn_player():
 	var p = player.instance()
+	p.set_name("Player")
 	add_child(p)
 	p.set_position(Vector2(rand_range(22, (screensize.x - 22)),(screensize.y - 44)))

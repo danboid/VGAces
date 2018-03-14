@@ -17,7 +17,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -40,5 +40,7 @@ shape = SubResource( 1 )
 
 frames = SubResource( 2 )
 animation = "default"
+
+[connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
 
 
