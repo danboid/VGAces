@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://pmissile.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ogg/zzap.ogg" type="AudioStream" id=4]
-[ext_resource path="res://HUD.tscn" type="PackedScene" id=5]
-[ext_resource path="res://HUD.gd" type="Script" id=6]
-[ext_resource path="res://ogg/explosion.ogg" type="AudioStream" id=7]
+[ext_resource path="res://ogg/zzap.ogg" type="AudioStream" id=3]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://HUD.gd" type="Script" id=5]
+[ext_resource path="res://ogg/explosion.ogg" type="AudioStream" id=6]
 
 [node name="Main" type="Node" index="0"]
 
@@ -31,30 +30,26 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
 
-[node name="Player" parent="." index="1" instance=ExtResource( 3 )]
+[node name="PlayerZzap" type="AudioStreamPlayer" parent="." index="1"]
 
-position = Vector2( 342, 443 )
-
-[node name="PlayerZzap" type="AudioStreamPlayer" parent="." index="2"]
-
-stream = ExtResource( 4 )
+stream = ExtResource( 3 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="HUD" parent="." index="3" instance=ExtResource( 5 )]
+[node name="HUD" parent="." index="2" instance=ExtResource( 4 )]
 
-script = ExtResource( 6 )
+script = ExtResource( 5 )
 
-[node name="Explosion" type="AudioStreamPlayer" parent="." index="4"]
+[node name="Explosion" type="AudioStreamPlayer" parent="." index="3"]
 
-stream = ExtResource( 7 )
+stream = ExtResource( 6 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="Velons" type="Node2D" parent="." index="5"]
+[node name="Velons" type="Node2D" parent="." index="4"]
 
 
