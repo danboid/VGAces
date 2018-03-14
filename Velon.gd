@@ -7,6 +7,7 @@ var timer = null
 var nmepos = get_position()
 var bombpos = Vector2()
 var bdelay = rand_range(1, 5)
+onready var screensize = get_viewport_rect().size
 
 signal scoreinc
 
@@ -23,7 +24,7 @@ func _process(delta):
 		var bombpos = get_node("bomb").get_position()
 		bombpos.y = bombpos.y + 200 * delta
 		get_node("bomb").set_position(bombpos)
-		if bombpos.y > 480:
+		if bombpos.y > screensize.y:
 			get_node("bomb").queue_free()
 			bdelay = rand_range(1, 5)
 			timer.set_wait_time(bdelay)

@@ -17,7 +17,6 @@ var veloncount = 10
 
 func _ready():
 	randomize()
-	screensize = $Player.get_viewport_rect().size
 	spawn_velons(veloncount)
 
 func _process(delta):
@@ -74,8 +73,9 @@ func increase_score():
 	$HUD.update_score(score)
 	
 func spawn_velons(num):
-    for i in range(num):
-        var v = velon.instance()
-        velons.add_child(v)
-        v.connect("scoreinc", self, "increase_score")
-        v.set_position(Vector2(rand_range(0, 444),rand_range(33, 366)))
+	screensize = $Player.get_viewport_rect().size
+	for i in range(num):
+		var v = velon.instance()
+		velons.add_child(v)
+		v.connect("scoreinc", self, "increase_score")
+		v.set_position(Vector2(rand_range(22, (screensize.x - 44)),rand_range(33, (screensize.y - 66))))
