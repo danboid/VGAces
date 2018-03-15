@@ -36,11 +36,22 @@ __meta__ = {
 
 shape = SubResource( 1 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
+[node name="Sprite" type="AnimatedSprite" parent="." index="1"]
 
 frames = SubResource( 2 )
 animation = "default"
 
+[node name="Death" type="Tween" parent="." index="2"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
 [connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
+
+[connection signal="tween_completed" from="Death" to="." method="_on_Death_tween_completed"]
 
 
