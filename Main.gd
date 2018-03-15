@@ -4,6 +4,7 @@ extends Node
 export (PackedScene) var Pmissile
 
 onready var player = preload("res://Player.tscn")
+onready var p = player.instance()
 onready var velon = preload("res://Velon.tscn")
 onready var velons = get_node("Velons")
 
@@ -84,6 +85,7 @@ func spawn_velons(num):
 		v.set_position(Vector2(rand_range(22, (screensize.x - 44)),rand_range(33, (screensize.y - 99))))
 
 func spawn_player():
+	screensize = OS.get_window_size()
 	var p = player.instance()
 	p.set_name("Player")
 	add_child(p)
