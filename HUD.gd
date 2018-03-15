@@ -1,4 +1,6 @@
 extends CanvasLayer
 
 func update_score(score):
-    $Score.text = str(score)
+	var highscore = get_node("/root/Main").highscore
+	$Score.text = str(score)
+	$Highscore.text = str(highscore)

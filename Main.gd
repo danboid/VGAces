@@ -16,6 +16,7 @@ var screensize = OS.get_window_size()
 var pmisscount = 0
 var pmissarray = []
 var veloncount = 10
+var highscore = 0
 
 func _ready():
 	randomize()
