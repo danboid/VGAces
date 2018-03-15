@@ -35,7 +35,7 @@ __meta__ = {
 }
 Bomb = ExtResource( 2 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+[node name="Sprite" type="AnimatedSprite" parent="." index="0"]
 
 scale = Vector2( 0.33, 0.33 )
 frames = SubResource( 1 )
@@ -47,6 +47,17 @@ _sections_unfolded = [ "Transform" ]
 shape = SubResource( 2 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
+[node name="Death" type="Tween" parent="." index="2"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
 [connection signal="area_entered" from="." to="." method="_on_Velon_area_entered"]
+
+[connection signal="tween_completed" from="Death" to="." method="_on_Death_tween_completed"]
 
 
