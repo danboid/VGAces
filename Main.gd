@@ -7,6 +7,7 @@ onready var player = preload("res://Player.tscn")
 onready var p = player.instance()
 onready var velon = preload("res://Velon.tscn")
 onready var velons = get_node("Velons")
+onready var ovni = preload("res://Ovni.tscn")
 
 var velocity = Vector2()
 var spacepressed = false
@@ -17,11 +18,19 @@ var pmisscount = 0
 var pmissarray = []
 var veloncount = 10
 var highscore = 0
+var ovnitimer = null
 
 func _ready():
 	randomize()
 	spawn_player()
 	spawn_velons(veloncount)
+	ovnitimer = Timer.new()
+	ovnitimer.set_name("ovnitimer")
+	ovnitimer.set_one_shot(true)
+	ovnitimer.set_wait_time(22)
+	ovnitimer.connect("timeout", self, "spawn_ovni")
+	add_child(ovnitimer)
+	ovnitimer.start()
 
 func _process(delta):
     velocity = Vector2()
@@ -91,3 +100,11 @@ func spawn_player():
 	p.set_name("Player")
 	add_child(p)
 	p.set_position(Vector2(rand_range(22, (screensize.x - 22)),(screensize.y - 22)))
+	
+func spawn_ovni():
+	screensize = OS.get_window_size()
+	var o = ovni.instance()
+	o.set_name("Ovni")
+	add_child(o)
+	o.connect("scoreup", self, "update_score")
+	o.set_position(Vector2(-50,33))
