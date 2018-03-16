@@ -90,4 +90,4 @@ func spawn_player():
 	var p = player.instance()
 	p.set_name("Player")
 	add_child(p)
-	p.set_position(Vector2(rand_range(22, (screensize.x - 22)),(screensize.y - 44)))
+	p.set_position(Vector2(rand_range(22, (screensize.x - 22)),(screensize.y - 22)))
