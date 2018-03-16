@@ -1,7 +1,12 @@
 extends Area2D
 
+onready var birth = get_node("Birth")
 onready var death = get_node("Death")
 onready var sprite = get_node("Sprite")
+
+func _ready():
+	birth.interpolate_property(sprite, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 2.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	birth.start()
 
 
 func _on_Player_area_entered(area):
