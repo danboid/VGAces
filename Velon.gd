@@ -55,6 +55,7 @@ func _on_Velon_area_entered(area):
 		emit_signal("scoreup")
 		get_node("/root/Main/Explosion").play()
 		get_node("/root/Main").veloncount -= 1
+		$CollisionShape2D.disabled = true
 		death.interpolate_property(sprite, "rotation_degrees", 0, 720, 1.0, Tween.TRANS_QUAD, Tween.EASE_OUT)
 		death.interpolate_property(sprite, "scale", Vector2(0.33, 0.33), Vector2(0, 0), 1.0, Tween.TRANS_QUAD, Tween.EASE_OUT)
 		death.start()
