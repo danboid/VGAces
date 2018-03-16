@@ -2,6 +2,7 @@ extends Area2D
 
 export (PackedScene) var Bomb
 
+onready var birth = get_node("Birth")
 onready var death = get_node("Death")
 onready var sprite = get_node("Sprite")
 
@@ -15,12 +16,8 @@ onready var screensize = get_viewport_rect().size
 signal scoreup
 
 func _ready():
-	timer = Timer.new()
-	timer.set_one_shot(true)
-	timer.set_wait_time(bdelay)
-	timer.connect("timeout", self, "bomb")
-	add_child(timer)
-	timer.start()
+	birth.interpolate_property(sprite, "scale", Vector2(0, 0), Vector2(0.33, 0.33), 1.0, Tween.TRANS_QUAD, Tween.EASE_IN)
+	birth.start()
 
 func _process(delta):
 	if has_node("bomb"):
@@ -32,6 +29,14 @@ func _process(delta):
 			bdelay = rand_range(1, 5)
 			timer.set_wait_time(bdelay)
 			timer.start()
+
+func _on_Birth_tween_completed(object, key):
+	timer = Timer.new()
+	timer.set_one_shot(true)
+	timer.set_wait_time(bdelay)
+	timer.connect("timeout", self, "bomb")
+	add_child(timer)
+	timer.start()
 
 func bomb():
     var bomb = Bomb.instance()

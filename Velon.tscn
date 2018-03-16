@@ -56,8 +56,19 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
+[node name="Birth" type="Tween" parent="." index="3"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
 [connection signal="area_entered" from="." to="." method="_on_Velon_area_entered"]
 
 [connection signal="tween_completed" from="Death" to="." method="_on_Death_tween_completed"]
+
+[connection signal="tween_completed" from="Birth" to="." method="_on_Birth_tween_completed"]
 
 
