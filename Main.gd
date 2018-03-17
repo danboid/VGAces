@@ -33,41 +33,38 @@ func _ready():
 	ovnitimer.start()
 
 func _process(delta):
-    velocity = Vector2()
-    if Input.is_action_pressed("ui_right"):
-        velocity.x += 1
-    if Input.is_action_pressed("ui_left"):
-        velocity.x -= 1
-    if Input.is_action_pressed("ui_select"):
-	    if spacepressed == false:
-            fire()
-            spacepressed = true
-    else:
-        spacepressed = false
-		
-    if velocity.length() > 0:
-        velocity = velocity.normalized() * speed
-    if has_node("Player"):
-        $Player.position += velocity * delta
-        $Player.position.x = clamp($Player.position.x, 0, screensize.x)
-        $Player.position.y = clamp($Player.position.y, 0, screensize.y)
+	velocity = Vector2()
+	if Input.is_action_pressed("ui_right"):
+		velocity.x += 1
+	if Input.is_action_pressed("ui_left"):
+		velocity.x -= 1
+	if Input.is_action_pressed("ui_select"):
+		if spacepressed == false:
+			fire()
+			spacepressed = true
+	else:
+		spacepressed = false
 	
-    var missid = 0
-    for miss in pmissarray:
-        # Move player missiles up the screen
-        var pmisspos = get_node(miss).get_position()
-        pmisspos.y = pmisspos.y -500 * delta
-        get_node(miss).set_position(pmisspos)
-		# Remove missiles that fly off screen
-        if pmisspos.y < 0:
-            get_node(miss).queue_free()
-            pmissarray.remove(missid)
-        missid = missid + 1
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * speed
+	if has_node("Player"):
+		$Player.position += velocity * delta
+		$Player.position.x = clamp($Player.position.x, 0, screensize.x)
+		$Player.position.y = clamp($Player.position.y, 0, screensize.y)
+	
+	var missid = 0
+	for miss in pmissarray:
+		var pmisspos = get_node(miss).get_position()
+		pmisspos.y = pmisspos.y -500 * delta
+		get_node(miss).set_position(pmisspos)
+		if pmisspos.y < 0:
+			get_node(miss).queue_free()
+			pmissarray.remove(missid)
+		missid = missid + 1
 		
-    
-    if veloncount == 3:
-        veloncount += 7
-        spawn_velons(veloncount)
+	if veloncount == 3:
+		veloncount += 7
+		spawn_velons(veloncount)
 
 func fire():
 	if has_node("Player"):

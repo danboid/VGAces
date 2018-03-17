@@ -39,12 +39,12 @@ func _on_Birth_tween_completed(object, key):
 	timer.start()
 
 func bomb():
-    var bomb = Bomb.instance()
-    bomb.set_name("bomb")
-    bombpos.y = nmepos.y + 25
-    bombpos.x = nmepos.x
-    add_child(bomb)
-    get_node("bomb").set_position(bombpos)
+	var bomb = Bomb.instance()
+	bomb.set_name("bomb")
+	bombpos.y = nmepos.y + 25
+	bombpos.x = nmepos.x
+	add_child(bomb)
+	get_node("bomb").set_position(bombpos)
 
 func _on_Velon_area_entered(area):
 	alph -= .1
