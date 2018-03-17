@@ -48,7 +48,7 @@ func bomb():
 
 func _on_Velon_area_entered(area):
 	alph -= .1
-	if alph > .1:
+	if alph > .2:
 		$Sprite.set("modulate",Color(1, 1, 1, alph))
 	else:
 		get_node("/root/Main").score += 1

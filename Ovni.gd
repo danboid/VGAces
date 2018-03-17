@@ -8,9 +8,8 @@ onready var mainnode = get_node("/root/Main")
 onready var screensize = get_viewport_rect().size
 
 func _on_Ovni_area_entered(area):
-	mainnode.connect("scoreup", self, "update_score")
 	alph -= .1
-	if alph > .1:
+	if alph > .2:
 		$AnimatedSprite.set("modulate",Color(1, 1, 1, alph))
 	else:
 		get_node("/root/Main").score += 10
