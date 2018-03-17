@@ -27,7 +27,7 @@ func _ready():
 	ovnitimer = Timer.new()
 	ovnitimer.set_name("ovnitimer")
 	ovnitimer.set_one_shot(true)
-	ovnitimer.set_wait_time(22)
+	ovnitimer.set_wait_time(20)
 	ovnitimer.connect("timeout", self, "spawn_ovni")
 	add_child(ovnitimer)
 	ovnitimer.start()
