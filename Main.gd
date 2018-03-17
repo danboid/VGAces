@@ -108,3 +108,4 @@ func spawn_ovni():
 	add_child(o)
 	o.connect("scoreup", self, "update_score")
 	o.set_position(Vector2(-50,33))
+	$Siren.play()

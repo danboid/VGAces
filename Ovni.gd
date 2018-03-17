@@ -17,6 +17,7 @@ func _on_Ovni_area_entered(area):
 		emit_signal("scoreup")
 		get_node("/root/Main/Explosion").play()
 		$CollisionShape2D.disabled = true
+		get_node("/root/Main/Siren").stop()
 		death.interpolate_property(sprite, "rotation_degrees", 0, -360, 1.0, Tween.TRANS_QUAD, Tween.EASE_OUT)
 		death.interpolate_property(sprite, "scale", Vector2(0.25, 0.25), Vector2(0, 0), 1.0, Tween.TRANS_QUAD, Tween.EASE_OUT)
 		death.start()
@@ -28,6 +29,7 @@ func _process(delta):
 	
 	if ovnipos.x > (screensize.x + 100):
 		queue_free()
+		get_node("/root/Main/Siren").stop()
 		get_node("/root/Main/ovnitimer").start()
 
 func _on_Death_tween_completed(object, key):
