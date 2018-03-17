@@ -62,7 +62,7 @@ func _process(delta):
 			pmissarray.remove(missid)
 		missid = missid + 1
 		
-	if veloncount == 3:
+	if veloncount < 4:
 		veloncount += 7
 		spawn_velons(veloncount)
 
