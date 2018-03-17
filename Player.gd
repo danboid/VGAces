@@ -16,6 +16,7 @@ func _on_Player_area_entered(area):
 		get_node("/root/Main").highscore = score
 	get_node("/root/Main").score = 0
 	get_node("/root/Main").update_score()
+	get_node("/root/Main/Death").play()
 	death.interpolate_property(sprite, "scale", Vector2(1.0, 1.0), Vector2(0, 0), 1.0, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
 	death.start()
 
