@@ -20,15 +20,7 @@ func _ready():
 	birth.start()
 
 func _process(delta):
-	if has_node("bomb"):
-		var bombpos = get_node("bomb").get_position()
-		bombpos.y = bombpos.y + 200 * delta
-		get_node("bomb").set_position(bombpos)
-		if bombpos.y > screensize.y:
-			get_node("bomb").queue_free()
-			bdelay = rand_range(1, 5)
-			timer.set_wait_time(bdelay)
-			timer.start()
+	pass
 
 func _on_Birth_tween_completed(object, key):
 	timer = Timer.new()
