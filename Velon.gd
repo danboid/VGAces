@@ -5,13 +5,19 @@ export (PackedScene) var Bomb
 onready var birth = get_node("Birth")
 onready var death = get_node("Death")
 onready var sprite = get_node("Sprite")
+onready var screensize = get_viewport_rect().size
 
 var alph = 1
+var born = false
 var timer = null
-var nmepos = get_position()
 var bombpos = Vector2()
 var bdelay = rand_range(1, 5)
-onready var screensize = get_viewport_rect().size
+var dist = rand_range(50, 100)
+var right = Vector2()
+var left = Vector2()
+var startpos = Vector2()
+var direction = true
+var speed = rand_range(50, 150)
 
 signal scoreup
 
@@ -20,9 +26,26 @@ func _ready():
 	birth.start()
 
 func _process(delta):
-	pass
+	if born == true:
+		var velpos = get_position()
+		if direction == true:
+			if velpos.x < right.x:
+				velpos.x = velpos.x + speed * delta
+				set_position(velpos)
+			else:
+				direction = false
+		else:
+			if velpos.x > left.x:
+				velpos.x = velpos.x - speed * delta
+				set_position(velpos)
+			else:
+				direction = true
 
 func _on_Birth_tween_completed(object, key):
+	born = true
+	startpos = get_position()
+	right = Vector2(startpos.x + dist, startpos.y)
+	left =  Vector2(startpos.x - dist, startpos.y)
 	timer = Timer.new()
 	timer.set_one_shot(true)
 	timer.set_wait_time(bdelay)
@@ -32,11 +55,15 @@ func _on_Birth_tween_completed(object, key):
 
 func bomb():
 	var bomb = Bomb.instance()
+	var velpos = get_position()
 	bomb.set_name("bomb")
-	bombpos.y = nmepos.y + 25
-	bombpos.x = nmepos.x
-	add_child(bomb)
-	get_node("bomb").set_position(bombpos)
+	bombpos.y = velpos.y + 25
+	bombpos.x = velpos.x
+	bomb.set_position(bombpos)
+	get_node("/root/Main").add_child(bomb)
+	bdelay = rand_range(3, 5)
+	timer.set_wait_time(bdelay)
+	timer.start()
 
 func _on_Velon_area_entered(area):
 	alph -= .1
