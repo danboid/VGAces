@@ -13,9 +13,9 @@ func _on_Widehorn_area_entered(area):
 	if colr < 1:
 		$Sprite.set("modulate",Color(colr, colr, colr, 1))
 	else:
+		get_node("/root/Main/Whinny").play()
 		$CollisionShape2D.disabled = true
 		death.interpolate_property(sprite, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 2.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
-		death.interpolate_property(sprite, "scale", Vector2(0.12, 0.12), Vector2(0, 0), 2.0, Tween.TRANS_QUAD, Tween.EASE_OUT)
 		death.start()
 
 func _on_Death_tween_completed(object, key):

@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/whinny.ogg-d97aaec765b9f5a78f3334bb842b46b8.oggstr"
+
+[deps]
+
+source_file="res://ogg/whinny.ogg"
+source_md5="2e827c886476b1c9a5984b161c7705a3"
+
+dest_files=[ "res://.import/whinny.ogg-d97aaec765b9f5a78f3334bb842b46b8.oggstr" ]
+dest_md5="561a5967f2878b1c3cf2bdcf575a806e"
+
+[params]
+
+loop=false
+loop_offset=0
