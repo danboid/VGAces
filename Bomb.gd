@@ -7,3 +7,7 @@ func _process(delta):
 	set_position(bombpos)
 	if bombpos.y > screensize.y:
 		queue_free()
+
+
+func _on_Bomb_area_entered(area):
+	queue_free()
