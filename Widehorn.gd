@@ -1,6 +1,9 @@
 extends Area2D
 
-var colr = 0.1
+var colr = 0.06
+
+func _ready():
+	$Sprite.set("modulate",Color(colr, colr, colr, 1))
 
 func _on_Widehorn_area_entered(area):
 	colr += .01
