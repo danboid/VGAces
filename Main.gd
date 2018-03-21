@@ -89,7 +89,7 @@ func spawn_velons(num):
 		var v = velon.instance()
 		velons.add_child(v)
 		v.connect("scoreup", self, "update_score")
-		v.set_position(Vector2(rand_range(22, (screensize.x - 44)),rand_range(33, (screensize.y - 99))))
+		v.set_position(Vector2(rand_range(22, (screensize.x - 44)),rand_range(33, (screensize.y - 133))))
 
 func spawn_player():
 	screensize = OS.get_window_size()

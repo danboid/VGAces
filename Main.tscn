@@ -73,17 +73,17 @@ bus = "Master"
 
 [node name="Widehorn" parent="." index="7" instance=ExtResource( 9 )]
 
-position = Vector2( 324, 366 )
+position = Vector2( 324, 393 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Widehorn2" parent="." index="8" instance=ExtResource( 9 )]
 
-position = Vector2( 60, 366 )
+position = Vector2( 60, 393 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Widehorn3" parent="." index="9" instance=ExtResource( 9 )]
 
-position = Vector2( 569, 366 )
+position = Vector2( 569, 393 )
 _sections_unfolded = [ "Transform" ]
 
 
