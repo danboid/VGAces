@@ -34,6 +34,15 @@ position = Vector2( 0.224678, 11.131 )
 scale = Vector2( 3.48942, 4.20238 )
 shape = SubResource( 1 )
 
+[node name="Death" type="Tween" parent="." index="2"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
 [connection signal="area_entered" from="." to="." method="_on_Widehorn_area_entered"]
 
 
