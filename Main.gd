@@ -13,7 +13,6 @@ var velocity = Vector2()
 var spacepressed = false
 var speed = 200
 var score = 0
-var screensize = OS.get_window_size()
 var pmisscount = 0
 var pmissarray = []
 var veloncount = 10
@@ -49,8 +48,8 @@ func _process(delta):
 		velocity = velocity.normalized() * speed
 	if has_node("Player"):
 		$Player.position += velocity * delta
-		$Player.position.x = clamp($Player.position.x, 0, screensize.x)
-		$Player.position.y = clamp($Player.position.y, 0, screensize.y)
+		$Player.position.x = clamp($Player.position.x, 0, 640)
+		$Player.position.y = clamp($Player.position.y, 0, 480)
 	
 	var missid = 0
 	for miss in pmissarray:
@@ -84,22 +83,19 @@ func update_score():
 	$HUD.update_score(score)
 	
 func spawn_velons(num):
-	screensize = OS.get_window_size()
 	for i in range(num):
 		var v = velon.instance()
 		velons.add_child(v)
 		v.connect("scoreup", self, "update_score")
-		v.set_position(Vector2(rand_range(22, (screensize.x - 44)),rand_range(33, (screensize.y - 133))))
+		v.set_position(Vector2(rand_range(22, 596),rand_range(33, 347)))
 
 func spawn_player():
-	screensize = OS.get_window_size()
 	var p = player.instance()
 	p.set_name("Player")
 	add_child(p)
 	p.set_position(Vector2(rand_range(22, 640), 458))
 	
 func spawn_ovni():
-	screensize = OS.get_window_size()
 	var o = ovni.instance()
 	o.set_name("Ovni")
 	add_child(o)
