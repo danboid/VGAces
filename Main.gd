@@ -8,6 +8,7 @@ onready var p = player.instance()
 onready var velon = preload("res://Velon.tscn")
 onready var velons = get_node("Velons")
 onready var ovni = preload("res://Ovni.tscn")
+onready var widehorn = preload("res://Widehorn.tscn")
 
 var velocity = Vector2()
 var spacepressed = false
@@ -18,11 +19,13 @@ var pmissarray = []
 var veloncount = 10
 var highscore = 0
 var ovnitimer = null
+var widehorns = 0
 
 func _ready():
 	randomize()
 	spawn_player()
 	spawn_velons(veloncount)
+	spawn_widehorns()
 	ovnitimer = Timer.new()
 	ovnitimer.set_name("ovnitimer")
 	ovnitimer.set_one_shot(true)
@@ -64,6 +67,9 @@ func _process(delta):
 	if veloncount < 4:
 		veloncount += 7
 		spawn_velons(veloncount)
+		
+	if widehorns == 0:
+		spawn_widehorns()
 
 func fire():
 	if has_node("Player"):
@@ -102,3 +108,18 @@ func spawn_ovni():
 	o.connect("scoreup", self, "update_score")
 	o.set_position(Vector2(-50,33))
 	$Siren.play()
+	
+func spawn_widehorns():
+	var lw = widehorn.instance()
+	add_child(lw)
+	lw.set_position(Vector2(63,393))
+	
+	var mw = widehorn.instance()
+	add_child(mw)
+	mw.set_position(Vector2(323,393))
+	
+	var rw = widehorn.instance()
+	add_child(rw)
+	rw.set_position(Vector2(569,393))
+	
+	widehorns = 3

@@ -45,4 +45,6 @@ playback/speed = 1.0
 
 [connection signal="area_entered" from="." to="." method="_on_Widehorn_area_entered"]
 
+[connection signal="tween_completed" from="Death" to="." method="_on_Death_tween_completed"]
+
 
