@@ -16,7 +16,7 @@ var speed = 200
 var score = 0
 var pmisscount = 0
 var pmissarray = []
-var veloncount = 10
+var veloncount = 0
 var highscore = 0
 var ovnitimer = null
 var widehorns = 0
@@ -24,8 +24,6 @@ var widehorns = 0
 func _ready():
 	randomize()
 	spawn_player()
-	spawn_velons(veloncount)
-	spawn_widehorns()
 	ovnitimer = Timer.new()
 	ovnitimer.set_name("ovnitimer")
 	ovnitimer.set_one_shot(true)
