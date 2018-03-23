@@ -10,6 +10,7 @@ func _ready():
 
 
 func _on_Player_area_entered(area):
+	$CollisionShape2D.disabled = true
 	var score = get_node("/root/Main").score
 	var highscore = get_node("/root/Main").highscore
 	if score > highscore:
