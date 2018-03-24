@@ -8,4 +8,10 @@ func _process(delta):
 		queue_free()
 
 func _on_Bomb_area_entered(area):
-	queue_free()
+	# Should probably do this using collision masks instead
+	if (area.get_name() == "LWH"):
+		queue_free()
+	elif (area.get_name() == "MWH"):
+		queue_free()
+	elif (area.get_name() == "RWH"):
+		queue_free()

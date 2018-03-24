@@ -112,13 +112,16 @@ func spawn_widehorns():
 	var lw = widehorn.instance()
 	add_child(lw)
 	lw.set_position(Vector2(63,393))
+	lw.set_name("LWH")
 	
 	var mw = widehorn.instance()
 	add_child(mw)
 	mw.set_position(Vector2(323,393))
+	mw.set_name("MWH")
 	
 	var rw = widehorn.instance()
 	add_child(rw)
 	rw.set_position(Vector2(569,393))
+	rw.set_name("RWH")
 	
 	widehorns = 3
