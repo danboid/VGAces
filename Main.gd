@@ -63,7 +63,7 @@ func _process(delta):
 		missid = missid + 1
 		
 	if veloncount < 4:
-		veloncount += 7
+		veloncount = rand_range(4, 11)
 		spawn_velons(veloncount)
 		
 	if widehorns == 0:
