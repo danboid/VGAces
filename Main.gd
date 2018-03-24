@@ -39,7 +39,7 @@ func _process(delta):
 		velocity.x += 1
 	if Input.is_action_pressed("ui_left"):
 		velocity.x -= 1
-	if Input.is_action_pressed("ui_select"):
+	if Input.is_action_pressed("ui_select") or Input.is_mouse_button_pressed(BUTTON_LEFT):
 		if spacepressed == false and bardo == false:
 			fire()
 			spacepressed = true
@@ -69,6 +69,10 @@ func _process(delta):
 		
 	if widehorns == 0:
 		spawn_widehorns()
+		
+func _input(event):
+	if event is InputEventMouseMotion:
+		$Player.position.x = event.position.x
 
 func fire():
 	if has_node("Player"):
