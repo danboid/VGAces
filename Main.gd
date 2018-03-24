@@ -83,10 +83,10 @@ func fire():
 		get_node("pmissile"+str(pmisscount)).set_position(pmisspos)
 		pmissarray.push_back("pmissile"+str(pmisscount))
 		$PlayerZzap.play()
-	
+
 func update_score():
 	$HUD.update_score(score)
-	
+
 func spawn_velons(num):
 	for i in range(num):
 		var v = velon.instance()
@@ -99,7 +99,7 @@ func spawn_player():
 	p.set_name("Player")
 	add_child(p)
 	p.set_position(Vector2(rand_range(22, 640), 458))
-	
+
 func spawn_ovni():
 	var o = ovni.instance()
 	o.set_name("Ovni")
@@ -107,7 +107,7 @@ func spawn_ovni():
 	o.connect("scoreup", self, "update_score")
 	o.set_position(Vector2(-50,33))
 	$Siren.play()
-	
+
 func spawn_widehorns():
 	var lw = widehorn.instance()
 	add_child(lw)

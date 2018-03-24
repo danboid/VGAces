@@ -8,7 +8,6 @@ func _ready():
 	birth.interpolate_property(sprite, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	birth.start()
 
-
 func _on_Player_area_entered(area):
 	$CollisionShape2D.disabled = true
 	get_node("/root/Main").bardo = true

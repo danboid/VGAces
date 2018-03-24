@@ -5,7 +5,6 @@ export (PackedScene) var Bomb
 onready var birth = get_node("Birth")
 onready var death = get_node("Death")
 onready var sprite = get_node("Sprite")
-onready var screensize = get_viewport_rect().size
 
 var alph = 1
 var born = false
@@ -79,7 +78,6 @@ func _on_Velon_area_entered(area):
 		death.interpolate_property(sprite, "rotation_degrees", 0, 720, 1.0, Tween.TRANS_QUAD, Tween.EASE_OUT)
 		death.interpolate_property(sprite, "scale", Vector2(0.33, 0.33), Vector2(0, 0), 1.0, Tween.TRANS_QUAD, Tween.EASE_OUT)
 		death.start()
-
 
 func _on_Death_tween_completed(object, key):
 	queue_free()

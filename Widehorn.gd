@@ -5,7 +5,6 @@ onready var sprite = get_node("Sprite")
 
 var colr = 0.06
 
-
 func _ready():
 	$Sprite.set("modulate",Color(colr, colr, colr, 1))
 

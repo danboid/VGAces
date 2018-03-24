@@ -4,7 +4,6 @@ var alph = 1
 
 signal scoreup
 
-onready var screensize = get_viewport_rect().size
 onready var death = get_node("Death")
 onready var sprite = get_node("Sprite")
 
@@ -27,7 +26,7 @@ func _process(delta):
 	ovnipos.x = ovnipos.x + 140 * delta
 	set_position(ovnipos)
 	
-	if ovnipos.x > (screensize.x + 100):
+	if ovnipos.x > 740:
 		queue_free()
 		get_node("/root/Main/Siren").stop()
 		get_node("/root/Main/ovnitimer").start()
