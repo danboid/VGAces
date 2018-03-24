@@ -64,4 +64,6 @@ playback/speed = 1.0
 
 [connection signal="tween_completed" from="Death" to="." method="_on_Death_tween_completed"]
 
+[connection signal="tween_completed" from="Birth" to="." method="_on_Birth_tween_completed"]
+
 

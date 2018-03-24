@@ -20,6 +20,7 @@ var veloncount = 0
 var highscore = 0
 var ovnitimer = null
 var widehorns = 0
+var bardo = false
 
 func _ready():
 	randomize()
@@ -39,7 +40,7 @@ func _process(delta):
 	if Input.is_action_pressed("ui_left"):
 		velocity.x -= 1
 	if Input.is_action_pressed("ui_select"):
-		if spacepressed == false:
+		if spacepressed == false and bardo == false:
 			fire()
 			spacepressed = true
 	else:

@@ -5,12 +5,13 @@ onready var death = get_node("Death")
 onready var sprite = get_node("Sprite")
 
 func _ready():
-	birth.interpolate_property(sprite, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 2.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	birth.interpolate_property(sprite, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	birth.start()
 
 
 func _on_Player_area_entered(area):
 	$CollisionShape2D.disabled = true
+	get_node("/root/Main").bardo = true
 	var score = get_node("/root/Main").score
 	var highscore = get_node("/root/Main").highscore
 	if score > highscore:
@@ -25,3 +26,7 @@ func _on_Death_tween_completed(object, key):
 	set_name("DeadPlayer")
 	queue_free()
 	get_node("/root/Main").spawn_player()
+
+
+func _on_Birth_tween_completed(object, key):
+	get_node("/root/Main").bardo = false
