@@ -61,6 +61,7 @@ func bomb():
 	bombpos.x = velpos.x
 	bomb.set_position(bombpos)
 	get_node("/root/Main").add_child(bomb)
+	get_node("/root/Main/VelonFire").play()
 	bdelay = rand_range(3, 5)
 	timer.set_wait_time(bdelay)
 	timer.start()
