@@ -99,10 +99,11 @@ func spawn_velons(num):
 		v.set_position(Vector2(rand_range(22, 596),rand_range(33, 347)))
 
 func spawn_player():
-	var p = player.instance()
-	p.set_name("Player")
-	add_child(p)
-	p.set_position(Vector2(rand_range(22, 640), 458))
+	if has_node("Player") == false:
+		var p = player.instance()
+		p.set_name("Player")
+		add_child(p)
+		p.set_position(Vector2(rand_range(22, 640), 458))
 
 func spawn_ovni():
 	var o = ovni.instance()
