@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/dink.ogg-b31dbcd72bd6e5733be1c53c9f6f6459.oggstr"
+
+[deps]
+
+source_file="res://ogg/dink.ogg"
+source_md5="24123cf00bbcea4e5abbf28fc468779d"
+
+dest_files=[ "res://.import/dink.ogg-b31dbcd72bd6e5733be1c53c9f6f6459.oggstr" ]
+dest_md5="e0f7e01f04cf6bc774fc363def5be678"
+
+[params]
+
+loop=false
+loop_offset=0
