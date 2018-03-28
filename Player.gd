@@ -9,17 +9,21 @@ func _ready():
 	birth.start()
 
 func _on_Player_area_entered(area):
-	$CollisionShape2D.disabled = true
-	get_node("/root/Main").bardo = true
-	var score = get_node("/root/Main").score
-	var highscore = get_node("/root/Main").highscore
-	if score > highscore:
-		get_node("/root/Main").highscore = score
-	get_node("/root/Main").score = 0
-	get_node("/root/Main").update_score()
-	get_node("/root/Main/Death").play()
-	death.interpolate_property(sprite, "scale", Vector2(1.0, 1.0), Vector2(0, 0), 1.0, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
-	death.start()
+	if (area.get_name() == "nuke"):
+		get_node("/root/Main/HUD/nuke").show()
+		get_node("/root/Main/nuke").queue_free()
+	else:
+		$CollisionShape2D.disabled = true
+		get_node("/root/Main").bardo = true
+		var score = get_node("/root/Main").score
+		var highscore = get_node("/root/Main").highscore
+		if score > highscore:
+			get_node("/root/Main").highscore = score
+		get_node("/root/Main").score = 0
+		get_node("/root/Main").update_score()
+		get_node("/root/Main/Death").play()
+		death.interpolate_property(sprite, "scale", Vector2(1.0, 1.0), Vector2(0, 0), 1.0, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
+		death.start()
 
 func _on_Death_tween_completed(object, key):
 	set_name("DeadPlayer")

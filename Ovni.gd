@@ -40,8 +40,7 @@ func _on_Death_tween_completed(object, key):
 func droppowr():
 	var nuke = nukefall.instance()
 	var ovnipos = get_position()
-#	nukepos.y = ovnipos.y + 25
-#	nukepos.x = ovnipos.x
 	nuke.set_position(ovnipos)
+	nuke.set_name("nuke")
 	get_node("/root/Main").add_child(nuke)
 	

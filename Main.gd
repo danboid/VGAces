@@ -63,8 +63,8 @@ func _process(delta):
 			pmissarray.remove(missid)
 		missid = missid + 1
 		
-	if veloncount < 5:
-		var newvelons = rand_range(5, 12)
+	if veloncount < 4:
+		var newvelons = rand_range(4, 10)
 		spawn_velons(newvelons)
 		veloncount += newvelons
 		
