@@ -9,9 +9,11 @@ onready var velon = preload("res://Velon.tscn")
 onready var velons = get_node("Velons")
 onready var ovni = preload("res://Ovni.tscn")
 onready var widehorn = preload("res://Widehorn.tscn")
+onready var nukefire = preload("res://Nukefire.tscn")
 
 var velocity = Vector2()
 var spacepressed = false
+var ctrlpressed = false
 var speed = 200
 var score = 0
 var pmisscount = 0
@@ -21,6 +23,7 @@ var highscore = 0
 var ovnitimer = null
 var widehorns = 0
 var bardo = false
+var havenuke = false
 
 func _ready():
 	randomize()
@@ -35,6 +38,18 @@ func _ready():
 
 func _process(delta):
 	velocity = Vector2()
+	if Input.is_action_pressed("fire_nuke") and havenuke == true:
+		if ctrlpressed == false:
+			var nukepos = $Player.get_position()
+			var n = nukefire.instance()
+			add_child(n)
+			n.set_position(nukepos)
+			n.set_name("nuke")
+			havenuke = false
+			$HUD/nuke.hide()
+			ctrlpressed = true
+	else:
+		ctrlpressed = false
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1
 	if Input.is_action_pressed("ui_left"):

@@ -11,6 +11,7 @@ func _ready():
 func _on_Player_area_entered(area):
 	if (area.get_name() == "nuke"):
 		get_node("/root/Main/HUD/nuke").show()
+		get_node("/root/Main").havenuke = true
 		get_node("/root/Main/nuke").queue_free()
 	else:
 		$CollisionShape2D.disabled = true

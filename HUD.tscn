@@ -2,7 +2,7 @@
 
 [ext_resource path="res://img/nuke.png" type="Texture" id=1]
 
-[node name="HUD" type="CanvasLayer" index="0"]
+[node name="HUD" type="CanvasLayer"]
 
 layer = 1
 offset = Vector2( 0, 0 )
