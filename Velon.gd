@@ -67,8 +67,8 @@ func bomb():
 
 func _on_Velon_area_entered(area):
 	alph -= .1
+	# This if should detect the blast but it doesn't
 	if (area.get_name() == "Blast"):
-		print("Blast")
 		die()
 	elif alph > .2:
 		$Sprite.set("modulate",Color(1, 1, 1, alph))
