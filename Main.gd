@@ -158,3 +158,4 @@ func nukeblast():
 	var nb = nukeblast.instance()
 	add_child(nb)
 	nb.set_position(nukedest)
+	$Nuke.play()
