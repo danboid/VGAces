@@ -33,7 +33,7 @@ func _ready():
 	ovnitimer = Timer.new()
 	ovnitimer.set_name("ovnitimer")
 	ovnitimer.set_one_shot(true)
-	ovnitimer.set_wait_time(20)
+	ovnitimer.set_wait_time(10)
 	ovnitimer.connect("timeout", self, "spawn_ovni")
 	add_child(ovnitimer)
 	ovnitimer.start()
@@ -145,7 +145,7 @@ func spawn_widehorns():
 	
 func nukefire():
 	var nukepos = $Player.get_position()
-	nukedest = Vector2(nukepos.x, (nukepos.y - 200))
+	nukedest = Vector2(nukepos.x, (nukepos.y - 250))
 	var n = nukefire.instance()
 	add_child(n)
 	n.set_position(nukepos)
@@ -158,4 +158,3 @@ func nukeblast():
 	var nb = nukeblast.instance()
 	add_child(nb)
 	nb.set_position(nukedest)
-	nb.set_name("Blast")

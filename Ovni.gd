@@ -10,19 +10,13 @@ onready var nukefall = preload("res://Nukefall.tscn")
 
 func _on_Ovni_area_entered(area):
 	alph -= .1
+	if (area.get_name() == "Nukeblast"):
+		ovnidie()
 	if alph > .4:
 		$Sprite.set("modulate",Color(1, 1, 1, alph))
 	else:
-		$CollisionShape2D.disabled = true
-		get_node("/root/Main").score += 10
-		emit_signal("scoreup")
-		get_node("/root/Main/Explosion").play()
-		get_node("/root/Main/Siren").stop()
-		droppowr()
-		death.interpolate_property(sprite, "rotation_degrees", 0, -360, 1.0, Tween.TRANS_QUAD, Tween.EASE_OUT)
-		death.interpolate_property(sprite, "scale", Vector2(0.25, 0.25), Vector2(0, 0), 1.0, Tween.TRANS_QUAD, Tween.EASE_OUT)
-		death.start()
-		
+		ovnidie()
+
 func _process(delta):
 	var ovnipos = get_position()
 	ovnipos.x = ovnipos.x + 140 * delta
@@ -44,3 +38,13 @@ func droppowr():
 	nuke.set_name("nuke")
 	get_node("/root/Main").add_child(nuke)
 	
+func ovnidie():
+	$CollisionShape2D.disabled = true
+	get_node("/root/Main").score += 10
+	emit_signal("scoreup")
+	get_node("/root/Main/Explosion").play()
+	get_node("/root/Main/Siren").stop()
+	droppowr()
+	death.interpolate_property(sprite, "rotation_degrees", 0, -360, 1.0, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	death.interpolate_property(sprite, "scale", Vector2(0.25, 0.25), Vector2(0, 0), 1.0, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	death.start()
