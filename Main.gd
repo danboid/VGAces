@@ -10,6 +10,7 @@ onready var velons = get_node("Velons")
 onready var ovni = preload("res://Ovni.tscn")
 onready var widehorn = preload("res://Widehorn.tscn")
 onready var nukefire = preload("res://Nukefire.tscn")
+onready var nukeblast = preload("res://Nukeblast.tscn")
 
 var velocity = Vector2()
 var spacepressed = false
@@ -32,7 +33,7 @@ func _ready():
 	ovnitimer = Timer.new()
 	ovnitimer.set_name("ovnitimer")
 	ovnitimer.set_one_shot(true)
-	ovnitimer.set_wait_time(20)
+	ovnitimer.set_wait_time(2)
 	ovnitimer.connect("timeout", self, "spawn_ovni")
 	add_child(ovnitimer)
 	ovnitimer.start()
@@ -149,5 +150,12 @@ func nukefire():
 	add_child(n)
 	n.set_position(nukepos)
 	n.set_name("nuke")
+	n.connect("gonuke", self, "nukeblast")
 	havenuke = false
 	$HUD/nuke.hide()
+	
+func nukeblast():
+	var nb = nukeblast.instance()
+	add_child(nb)
+	nb.set_position(nukedest)
+	nb.set_name("Blast")

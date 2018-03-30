@@ -67,17 +67,23 @@ func bomb():
 
 func _on_Velon_area_entered(area):
 	alph -= .1
-	if alph > .2:
+	if (area.get_name() == "Blast"):
+		print("Blast")
+		die()
+	elif alph > .2:
 		$Sprite.set("modulate",Color(1, 1, 1, alph))
 	else:
-		get_node("/root/Main").score += 1
-		emit_signal("scoreup")
-		get_node("/root/Main/Explosion").play()
-		get_node("/root/Main").veloncount -= 1
-		$CollisionShape2D.disabled = true
-		death.interpolate_property(sprite, "rotation_degrees", 0, 720, 1.0, Tween.TRANS_QUAD, Tween.EASE_OUT)
-		death.interpolate_property(sprite, "scale", Vector2(0.33, 0.33), Vector2(0, 0), 1.0, Tween.TRANS_QUAD, Tween.EASE_OUT)
-		death.start()
+		die()
 
 func _on_Death_tween_completed(object, key):
 	queue_free()
+
+func die():
+	get_node("/root/Main").score += 1
+	emit_signal("scoreup")
+	get_node("/root/Main/Explosion").play()
+	get_node("/root/Main").veloncount -= 1
+	$CollisionShape2D.disabled = true
+	death.interpolate_property(sprite, "rotation_degrees", 0, 720, 1.0, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	death.interpolate_property(sprite, "scale", Vector2(0.33, 0.33), Vector2(0, 0), 1.0, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	death.start()
