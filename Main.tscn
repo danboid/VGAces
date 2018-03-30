@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://pmissile.tscn" type="PackedScene" id=2]
@@ -12,8 +12,9 @@
 [ext_resource path="res://ogg/velon-fire.ogg" type="AudioStream" id=10]
 [ext_resource path="res://ogg/dink.ogg" type="AudioStream" id=11]
 [ext_resource path="res://ogg/nuke.ogg" type="AudioStream" id=12]
+[ext_resource path="res://ogg/powerup.ogg" type="AudioStream" id=13]
 
-[node name="Main" type="Node" index="0"]
+[node name="Main" type="Node"]
 
 script = ExtResource( 1 )
 Pmissile = ExtResource( 2 )
@@ -101,6 +102,14 @@ bus = "Master"
 [node name="Nuke" type="AudioStreamPlayer" parent="." index="10"]
 
 stream = ExtResource( 12 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Powerup" type="AudioStreamPlayer" parent="." index="11"]
+
+stream = ExtResource( 13 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0

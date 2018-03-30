@@ -13,6 +13,7 @@ func _on_Player_area_entered(area):
 		get_node("/root/Main/HUD/nuke").show()
 		get_node("/root/Main").havenuke = true
 		get_node("/root/Main/nuke").queue_free()
+		get_node("/root/Main/Powerup").play()
 	else:
 		$CollisionShape2D.disabled = true
 		get_node("/root/Main").bardo = true
