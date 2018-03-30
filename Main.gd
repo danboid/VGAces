@@ -24,6 +24,7 @@ var ovnitimer = null
 var widehorns = 0
 var bardo = false
 var havenuke = false
+var nukedest = Vector2()
 
 func _ready():
 	randomize()
@@ -40,13 +41,7 @@ func _process(delta):
 	velocity = Vector2()
 	if Input.is_action_pressed("fire_nuke") and havenuke == true:
 		if ctrlpressed == false:
-			var nukepos = $Player.get_position()
-			var n = nukefire.instance()
-			add_child(n)
-			n.set_position(nukepos)
-			n.set_name("nuke")
-			havenuke = false
-			$HUD/nuke.hide()
+			nukefire()
 			ctrlpressed = true
 	else:
 		ctrlpressed = false
@@ -146,3 +141,13 @@ func spawn_widehorns():
 	rw.set_name("RWH")
 	
 	widehorns = 3
+	
+func nukefire():
+	var nukepos = $Player.get_position()
+	nukedest = Vector2(nukepos.x, (nukepos.y - 200))
+	var n = nukefire.instance()
+	add_child(n)
+	n.set_position(nukepos)
+	n.set_name("nuke")
+	havenuke = false
+	$HUD/nuke.hide()
