@@ -26,6 +26,8 @@ var widehorns = 0
 var bardo = false
 var havenuke = false
 var nukedest = Vector2()
+var swipe_start = null
+var minimum_drag = 100
 
 func _ready():
 	randomize()
@@ -40,7 +42,7 @@ func _ready():
 
 func _process(delta):
 	velocity = Vector2()
-	if Input.is_action_pressed("fire_nuke") and havenuke == true:
+	if Input.is_action_pressed("fire_nuke") and havenuke:
 		if ctrlpressed == false:
 			nukefire()
 			ctrlpressed = true
@@ -88,6 +90,10 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if (event.pressed and event.button_index == BUTTON_RIGHT and havenuke):
 			nukefire()
+	if event.is_action_pressed("click"):
+		swipe_start = event.position
+	if event.is_action_released("click"):
+		calculate_swipe(event.position)
 
 func fire():
 	if has_node("Player"):
@@ -163,3 +169,11 @@ func nukeblast():
 	add_child(nb)
 	nb.set_position(nukedest)
 	$Nuke.play()
+	    
+func calculate_swipe(swipe_end):
+	if swipe_start == null:
+		return
+	var swipe = swipe_end - swipe_start
+	if abs(swipe.y) > minimum_drag:
+		if swipe.y < -100 and havenuke:
+			nukefire()
