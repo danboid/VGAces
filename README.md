@@ -6,7 +6,7 @@ Some sprites courtesy of [Kenney](https://kenney.nl/).
 
 ## CONTROLS
 
-Use the left and right arrow keys to move and SPACE to fire the laser. Use left CTRL, right mouse click or a long press to launch a nuke after you have collected one. 
+Use the LEFT and RIGHT arrow keys to move and SPACE to fire the laser. Use the left CTRL key, the right mouse button or swipe upwards to launch a nuke after you have collected one. 
 You can control the player using a joypad, joystick, mouse or touchscreen.
 
 ## RUNNING
