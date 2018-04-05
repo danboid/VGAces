@@ -43,7 +43,6 @@ func _process(delta):
 	if Input.is_action_pressed("fire_nuke") and havenuke == true:
 		if ctrlpressed == false:
 			nukefire()
-			$Launch.play()
 			ctrlpressed = true
 	else:
 		ctrlpressed = false
@@ -86,6 +85,9 @@ func _process(delta):
 func _input(event):
 	if event is InputEventMouseMotion:
 		$Player.position.x = event.position.x
+	if event is InputEventMouseButton:
+		if (event.pressed and event.button_index == BUTTON_RIGHT and havenuke):
+			nukefire()
 
 func fire():
 	if has_node("Player"):
@@ -154,6 +156,7 @@ func nukefire():
 	n.connect("gonuke", self, "nukeblast")
 	havenuke = false
 	$HUD/nuke.hide()
+	$Launch.play()
 	
 func nukeblast():
 	var nb = nukeblast.instance()
