@@ -1,6 +1,6 @@
 # VGAces
 
-An open source, 2D space shmup by Dan MacDonald using the Godot 3.0 game engine. 
+An open source, 2D space shooter by Dan MacDonald using the Godot 3.0 game engine. 
 
 Some sprites courtesy of [Kenney](https://kenney.nl/).
 
@@ -18,3 +18,5 @@ To run VGAces under Android you have to enable 'Unknown sources' support under S
 ### macOS
 
 VGAces may display an error when you try to run it under relatively recent versions of macOS. To work around this, hold the Control key when clicking the VGAces app icon then choose 'Open'.
+
+![VGAces screenshot](/img/VGAces.png)
